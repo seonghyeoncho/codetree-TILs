@@ -10,9 +10,9 @@ int main() {
 
     for(int i =0; i<s.size(); i++) {
         if(s[i] == 'C') {
-            for(int j = 0; j < s.size(); j++) {
+            for(int j = i + 1; j < s.size(); j++) {
                 if(s[j] == 'O') {
-                    for(int k = 0; k < s.size(); k++) {
+                    for(int k = j + 1; k < s.size(); k++) {
                         if(s[k] == 'W') c++;
                     }
                 }
