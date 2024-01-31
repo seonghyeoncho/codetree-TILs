@@ -17,7 +17,7 @@ bool check_carry(int a, int b, int c) {
     }
 
     for(int i = 0; i < k; i++) {
-        if(stoi(s1)%10* (i +1) + stoi(s2)%10* (i +1) + stoi(s3)%10* (i +1) > 10) return true;
+        if(stoi(s1)%(10* (i +1)) + stoi(s2)%(10* (i +1)) + stoi(s3)%(10* (i +1)) > 10) return true;
 
     }
     return false;
