@@ -22,10 +22,9 @@ void dfs(int x, int y, int d, int c) {
 
         if(nx < 19 && ny < 19 && nx >= 0 && ny >= 0) {
             if(!visited[nx][ny] && g[nx][ny]!=0) {
-
                 if(d == g[nx][ny]) {
                     dfs(nx, ny,g[nx][ny], c + 1);
-                    if(c == 1) p = {nx + 1, ny + 1};
+                    if(c == 2) p = {nx + 1, ny + 1};
                 }
             }
         }
@@ -39,7 +38,7 @@ int main() {
 
     for(int i =0; i < 19; i++) {
         for(int j =0; j< 19; j++) {
-            if(g[i][j] != 0) dfs(i, j, g[i][j], 0);
+            if(g[i][j] != 0) dfs(i, j, g[i][j], 1);
         }
     }
     cout<<answer << '\n' << p.first << ' ' <<p.second;
