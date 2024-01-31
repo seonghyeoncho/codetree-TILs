@@ -11,7 +11,7 @@ pair<int, int> p;
 
 void dfs(int x, int y, int d, int c) {
     visited[x][y] = true;
-    if(c == 4) {
+    if(c == 5) {
         answer = d;
         return;
     }
