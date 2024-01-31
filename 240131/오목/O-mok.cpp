@@ -24,7 +24,7 @@ void dfs(int x, int y, int d, int c) {
             if(!visited[nx][ny] && g[nx][ny]!=0) {
                 if(d == g[nx][ny]) {
                     dfs(nx, ny,g[nx][ny], c + 1);
-                    if(c == 2) p = {nx + 1, ny + 1};
+                    if(c == 3) p = {x + 1, y + 1};
                 }
             }
         }
