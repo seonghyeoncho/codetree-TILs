@@ -1,34 +1,17 @@
 #include <iostream>
 using namespace std;
+
 int g[20][20] = {0};
 
-int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
-int dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-bool visited[20][20] = {false};
-int answer = 0;
-pair<int, int> p;
+bool check(int x, int y) {
+    if(g[x][y] == g[x - 2][y] && g[x][y] == g[x - 1][y] && g[x][y] == g[x + 1][y] && g[x][y] == g[x + 2][y]) return true;
+    if(g[x][y] == g[x - 2][y + 2] && g[x][y] == g[x - 1][y + 1] && g[x][y] == g[x + 1][y- 1] && g[x][y] == g[x + 2][y-2]) return true;
+    if(g[x][y] == g[x][y + 2] && g[x][y] == g[x][y + 1] && g[x][y] == g[x][y-1] && g[x][y] == g[x][y-2]) return true;
+    if(g[x][y] == g[x + 2][y + 2] && g[x][y] == g[x + 1][y + 1] && g[x][y] == g[x -2][y-2] && g[x][y] == g[x -1][y-1]) return true;
+    
 
-bool dfs(int x, int y, int d, int c, int d) {
-    visited[x][y] = true;
-
-    if(c == 5) {
-        answer = d;
-        return true;
-    }
-
-    for(int i = 0; i < 8; i++) {
-        int nx = x + dx[i];
-        int ny = y + dy[i];
-
-        if(nx < 19 && ny < 19 && nx >= 0 && ny >= 0) {
-            if(!visited[nx][ny] && g[nx][ny]!=0) {
-                if(d == g[nx][ny]) {
-                    if(c == 3 && dfs(nx, ny,g[nx][ny], c + 1)) p = {x + 1, y + 1};
-                }
-            }
-        }
-    }
+    return false;
 }
 
 int main() {
@@ -36,11 +19,16 @@ int main() {
         for(int j =0; j < 19; j++) cin>>g[i][j];
     }
 
-    for(int i =0; i < 19; i++) {
-        for(int j =0; j< 19; j++) {
-            if(g[i][j] != 0) dfs(i, j, g[i][j], 1);
+    for(int i =2; i < 17; i++) {
+        for(int j =2; j< 17; j++) {
+            if(g[i][j] != 0) {
+                if(check(i, j)) {
+                    cout<< g[i][j] << '\n' << i + 1<< ' '<<j +1;
+                    return 0;
+                }
+            }
         }
     }
-    cout<<answer << '\n' << p.first << ' ' <<p.second;
+    
     return 0;
 }
